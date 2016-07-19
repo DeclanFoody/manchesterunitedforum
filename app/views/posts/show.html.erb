@@ -1,0 +1,6 @@
+
+<%= link_to "Back to all posts", posts_path %>
+<h2 class = "postheader"><%= @post.title %> (<%= link_to "edit", edit_post_path(@post) %>, <%= link_to "delete", post_path(@post), :method => :delete, :"data-confirm" => "Are you sure?" %>)
+<p><%= @post.text %></p>
+<p><small><%= @post.author %></small></p>
+</h2>

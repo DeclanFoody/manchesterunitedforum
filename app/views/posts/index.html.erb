@@ -1,0 +1,46 @@
+<h1 id = "header"><div id="star-five"></div><img src=""> Red Devils Rant Roundtable <div id="star-five"></div></h1>
+<div id = "create">Create a Post!</div><br>
+
+<% @posts.each do |post| %>
+<div class="post"> 
+<h2><%= link_to post.title, post_path(post) %></h2>
+<p><%= post.text %></p>
+<p><small>- <%= post.author %></small></p>
+</div>
+<% end %>
+<script>
+$("h2").hover(
+  function() {
+    $( this ).append( $( "<span> *** disagree? say it to my face! </span>" ) );
+  },
+   function() {
+    $( this ).find( "span" ).remove();
+  }
+);
+$("#create").on('click', function(){
+  $(this).removeClass().addClass(".createpostajax");
+  console.log('addingclass');
+});
+$( ".post" ).hover(
+  function color() {
+    $( this ).addClass("hoverpost");
+    console.log("second js");
+  },
+  function() {
+  $( this ).removeClass("hoverpost");
+  }
+  );
+$("#create").on('click', function(){
+  console.log("ajax")
+  $.ajax({url:"/posts/new", success: function(result){
+    $(result).appendTo("#create");
+  }})
+});
+function welcomeWindow (){
+  var myWindow = window.open(" ","myWindow", "width=500px, height=500px ");
+  // myWindow.write("<p>This is 'myWindow' </p>");
+  setTimeout(function(){ myWindow.close() }, 300);
+  console.log("welcome window");
+};
+welcomeWindow();
+</script>
