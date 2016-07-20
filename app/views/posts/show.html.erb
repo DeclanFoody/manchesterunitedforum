@@ -4,3 +4,15 @@
 <p><%= @post.text %></p>
 <p><small><%= @post.author %></small></p>
 </h2>
+
+<h3>replies to <em><%= @post.title %></em></h3>
+<% if current_user %>
+  <% @post.replies.each do |reply| %>
+    <div class ="replydiv"><p><%= reply.text %></p>
+    <p><%= reply.rating_out_of_ten %>/10</p>
+    <small>- <%= reply.user.email %></small><br/></div>
+  <% end %>
+  <p><%= link_to "Write a reply!", new_post_reply_path(@post) %></p>
+<% else %>
+  <p>Please <%= link_to "log in", new_session_path %> to see others idiotic opinions and add your own.</p> 
+<% end %>

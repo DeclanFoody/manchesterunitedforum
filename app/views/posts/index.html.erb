@@ -1,4 +1,4 @@
-<h1 id = "header"><div id="star-five"></div><img src=""> Red Devils Rant Roundtable <div id="star-five"></div></h1>
+<h1 id = "header"><img src=""> Red Devils Rant Roundtable </h1>
 <div id = "create">Create a Post!</div><br>
 
 <% @posts.each do |post| %>
@@ -18,10 +18,10 @@ $("h2").hover(
   }
 );
 $("#create").on('click', function(){
-  $(this).removeClass().addClass(".createpostajax");
+  $(this).removeClass('').addClass(".createpostajax");
   console.log('addingclass');
 });
-$( ".post" ).hover(
+$(".post").hover(
   function color() {
     $( this ).addClass("hoverpost");
     console.log("second js");

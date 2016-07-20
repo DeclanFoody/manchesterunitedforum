@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new'
 
-  get 'sessions/create'
+  get 'replies/new'
 
-  get 'users/new'
+  get 'replies/create'
 
-  get 'users/create'
-
-  resources :posts
+  resources :posts do
+    resources :replies, only: [:new, :create, :destroy]
+  end
   resources :users, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
